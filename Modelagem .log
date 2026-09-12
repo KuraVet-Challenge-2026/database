@@ -1,0 +1,398 @@
+Oracle SQL Developer Data Modeler 24.3.1.347.1153
+Oracle SQL Developer Data Modeler Log de Importação
+Data e Hora: 2026-09-12 16:56:16 BRT
+Nome do Design: 2TDSPO_2024_CodigoSql_Guilherme_Macedo_Henrique_Marrtins_ Pedro_Henrique_Luiz
+RDBMS : Oracle Database 21c
+
+		Todas as Instruções: 		147
+		Instruções Importadas: 	55
+		Instruções com Falha: 		0
+		Nenhuma Instrução Reconhecida: 	92
+
+<<<<< Não Reconhecido >>>>>
+SET SERVEROUTPUT ON
+
+SET LINESIZE 200
+
+BEGIN EXECUTE IMMEDIATE 'DROP TRIGGER TRG_AUDITORIA_CONSULTA'; EXCEPTION WHEN OTHERS THEN NULL; END
+
+BEGIN EXECUTE IMMEDIATE 'DROP TABLE AUDITORIA_LOG CASCADE CONSTRAINTS PURGE'; EXCEPTION WHEN OTHERS THEN NULL; END
+
+BEGIN EXECUTE IMMEDIATE 'DROP TABLE FATO_PAGAMENTO CASCADE CONSTRAINTS PURGE'; EXCEPTION WHEN OTHERS THEN NULL; END
+
+BEGIN EXECUTE IMMEDIATE 'DROP TABLE CONSULTA CASCADE CONSTRAINTS PURGE'; EXCEPTION WHEN OTHERS THEN NULL; END
+
+BEGIN EXECUTE IMMEDIATE 'DROP TABLE PET CASCADE CONSTRAINTS PURGE'; EXCEPTION WHEN OTHERS THEN NULL; END
+
+BEGIN EXECUTE IMMEDIATE 'DROP TABLE VETERINARIO CASCADE CONSTRAINTS PURGE'; EXCEPTION WHEN OTHERS THEN NULL; END
+
+BEGIN EXECUTE IMMEDIATE 'DROP TABLE TUTOR CASCADE CONSTRAINTS PURGE'; EXCEPTION WHEN OTHERS THEN NULL; END
+
+INSERT INTO TUTOR (ID_TUTOR, NOME, CPF, TELEFONE, EMAIL, ENDERECO, DATA_CADASTRO) VALUES (1,'Ana Beatriz Souza','111.222.333-44','(11) 91234-5601','ana.souza@email.com','Rua das Flores, 120 - Sao Paulo/SP', DATE '2024-01-10')
+
+INSERT INTO TUTOR (ID_TUTOR, NOME, CPF, TELEFONE, EMAIL, ENDERECO, DATA_CADASTRO) VALUES (2,'Carlos Eduardo Lima','222.333.444-55','(11) 91234-5602','carlos.lima@email.com','Av. Paulista, 900 - Sao Paulo/SP', DATE '2024-01-15')
+
+INSERT INTO TUTOR (ID_TUTOR, NOME, CPF, TELEFONE, EMAIL, ENDERECO, DATA_CADASTRO) VALUES (3,'Beatriz Fernandes','333.444.555-66','(21) 91234-5603','beatriz.fernandes@email.com','Rua Copacabana, 45 - Rio de Janeiro/RJ', DATE '2024-02-01')
+
+INSERT INTO TUTOR (ID_TUTOR, NOME, CPF, TELEFONE, EMAIL, ENDERECO, DATA_CADASTRO) VALUES (4,'Diego Almeida','444.555.666-77','(31) 91234-5604','diego.almeida@email.com','Rua Minas, 78 - Belo Horizonte/MG', DATE '2024-02-20')
+
+INSERT INTO TUTOR (ID_TUTOR, NOME, CPF, TELEFONE, EMAIL, ENDERECO, DATA_CADASTRO) VALUES (5,'Fernanda Costa','555.666.777-88','(41) 91234-5605','fernanda.costa@email.com','Rua Curitiba, 300 - Curitiba/PR', DATE '2024-03-05')
+
+INSERT INTO TUTOR (ID_TUTOR, NOME, CPF, TELEFONE, EMAIL, ENDERECO, DATA_CADASTRO) VALUES (6,'Gabriel Rocha','666.777.888-99','(51) 91234-5606','gabriel.rocha@email.com','Av. Ipiranga, 500 - Porto Alegre/RS', DATE '2024-03-18')
+
+INSERT INTO TUTOR (ID_TUTOR, NOME, CPF, TELEFONE, EMAIL, ENDERECO, DATA_CADASTRO) VALUES (7,'Helena Martins','777.888.999-00','(81) 91234-5607','helena.martins@email.com','Rua Recife, 150 - Recife/PE', DATE '2024-04-02')
+
+INSERT INTO TUTOR (ID_TUTOR, NOME, CPF, TELEFONE, EMAIL, ENDERECO, DATA_CADASTRO) VALUES (8,'Igor Nogueira','888.999.000-11','(61) 91234-5608','igor.nogueira@email.com','SQN 210 - Brasilia/DF', DATE '2024-04-25')
+
+INSERT INTO TUTOR (ID_TUTOR, NOME, CPF, TELEFONE, EMAIL, ENDERECO, DATA_CADASTRO) VALUES (9,'Juliana Pires','999.000.111-22','(85) 91234-5609','juliana.pires@email.com','Av. Beira Mar, 88 - Fortaleza/CE', DATE '2024-05-10')
+
+INSERT INTO TUTOR (ID_TUTOR, NOME, CPF, TELEFONE, EMAIL, ENDERECO, DATA_CADASTRO) VALUES (10,'Marcos Vinicius Teixeira','000.111.222-33','(71) 91234-5610','marcos.teixeira@email.com','Rua Salvador, 60 - Salvador/BA', DATE '2024-05-30')
+
+INSERT INTO VETERINARIO (ID_VETERINARIO, NOME, CRMV, ESPECIALIDADE, TELEFONE, EMAIL) VALUES (1,'Dra. Patricia Gomes','CRMV-SP 12345','Clinica Geral','(11) 3222-1001','patricia.gomes@kuravet.com')
+
+INSERT INTO VETERINARIO (ID_VETERINARIO, NOME, CRMV, ESPECIALIDADE, TELEFONE, EMAIL) VALUES (2,'Dr. Rafael Andrade','CRMV-SP 12346','Dermatologia','(11) 3222-1002','rafael.andrade@kuravet.com')
+
+INSERT INTO VETERINARIO (ID_VETERINARIO, NOME, CRMV, ESPECIALIDADE, TELEFONE, EMAIL) VALUES (3,'Dra. Camila Duarte','CRMV-RJ 22345','Cardiologia','(21) 3222-1003','camila.duarte@kuravet.com')
+
+INSERT INTO VETERINARIO (ID_VETERINARIO, NOME, CRMV, ESPECIALIDADE, TELEFONE, EMAIL) VALUES (4,'Dr. Bruno Cardoso','CRMV-MG 32345','Ortopedia','(31) 3222-1004','bruno.cardoso@kuravet.com')
+
+INSERT INTO VETERINARIO (ID_VETERINARIO, NOME, CRMV, ESPECIALIDADE, TELEFONE, EMAIL) VALUES (5,'Dra. Larissa Ferreira','CRMV-PR 42345','Clinica Geral','(41) 3222-1005','larissa.ferreira@kuravet.com')
+
+INSERT INTO VETERINARIO (ID_VETERINARIO, NOME, CRMV, ESPECIALIDADE, TELEFONE, EMAIL) VALUES (6,'Dr. Eduardo Santos','CRMV-RS 52345','Cirurgia','(51) 3222-1006','eduardo.santos@kuravet.com')
+
+INSERT INTO VETERINARIO (ID_VETERINARIO, NOME, CRMV, ESPECIALIDADE, TELEFONE, EMAIL) VALUES (7,'Dra. Renata Barbosa','CRMV-PE 62345','Oncologia','(81) 3222-1007','renata.barbosa@kuravet.com')
+
+INSERT INTO VETERINARIO (ID_VETERINARIO, NOME, CRMV, ESPECIALIDADE, TELEFONE, EMAIL) VALUES (8,'Dr. Felipe Ramos','CRMV-DF 72345','Clinica Geral','(61) 3222-1008','felipe.ramos@kuravet.com')
+
+INSERT INTO VETERINARIO (ID_VETERINARIO, NOME, CRMV, ESPECIALIDADE, TELEFONE, EMAIL) VALUES (9,'Dra. Vanessa Lopes','CRMV-CE 82345','Nutricao','(85) 3222-1009','vanessa.lopes@kuravet.com')
+
+INSERT INTO VETERINARIO (ID_VETERINARIO, NOME, CRMV, ESPECIALIDADE, TELEFONE, EMAIL) VALUES (10,'Dr. Thiago Moreira','CRMV-BA 92345','Clinica Geral','(71) 3222-1010','thiago.moreira@kuravet.com')
+
+INSERT INTO PET (ID_PET, NOME, ESPECIE, RACA, DATA_NASCIMENTO, SEXO, ID_TUTOR) VALUES (1,'Thor','Cachorro','Labrador', DATE '2022-03-15','M',1)
+
+INSERT INTO PET (ID_PET, NOME, ESPECIE, RACA, DATA_NASCIMENTO, SEXO, ID_TUTOR) VALUES (2,'Mel','Gato','SRD', DATE '2021-07-20','F',2)
+
+INSERT INTO PET (ID_PET, NOME, ESPECIE, RACA, DATA_NASCIMENTO, SEXO, ID_TUTOR) VALUES (3,'Bidu','Cachorro','Poodle', DATE '2019-11-05','M',3)
+
+INSERT INTO PET (ID_PET, NOME, ESPECIE, RACA, DATA_NASCIMENTO, SEXO, ID_TUTOR) VALUES (4,'Luna','Gato','Siames', DATE '2023-01-10','F',4)
+
+INSERT INTO PET (ID_PET, NOME, ESPECIE, RACA, DATA_NASCIMENTO, SEXO, ID_TUTOR) VALUES (5,'Rex','Cachorro','Pastor Alemao', DATE '2020-05-25','M',5)
+
+INSERT INTO PET (ID_PET, NOME, ESPECIE, RACA, DATA_NASCIMENTO, SEXO, ID_TUTOR) VALUES (6,'Nina','Gato','Persa', DATE '2022-09-12','F',6)
+
+INSERT INTO PET (ID_PET, NOME, ESPECIE, RACA, DATA_NASCIMENTO, SEXO, ID_TUTOR) VALUES (7,'Toby','Cachorro','Beagle', DATE '2021-02-18','M',7)
+
+INSERT INTO PET (ID_PET, NOME, ESPECIE, RACA, DATA_NASCIMENTO, SEXO, ID_TUTOR) VALUES (8,'Mimi','Gato','SRD', DATE '2023-06-30','F',8)
+
+INSERT INTO PET (ID_PET, NOME, ESPECIE, RACA, DATA_NASCIMENTO, SEXO, ID_TUTOR) VALUES (9,'Zeus','Cachorro','Rottweiler', DATE '2018-12-01','M',9)
+
+INSERT INTO PET (ID_PET, NOME, ESPECIE, RACA, DATA_NASCIMENTO, SEXO, ID_TUTOR) VALUES (10,'Belinha','Cachorro','Shih Tzu', DATE '2024-02-14','F',10)
+
+INSERT INTO CONSULTA (ID_CONSULTA, ID_PET, ID_VETERINARIO, DATA_CONSULTA, TIPO_CONSULTA, DIAGNOSTICO, STATUS) VALUES (1,1,1, DATE '2025-01-10','Checkup','Animal saudavel, vacinacao em dia','REALIZADA')
+
+INSERT INTO CONSULTA (ID_CONSULTA, ID_PET, ID_VETERINARIO, DATA_CONSULTA, TIPO_CONSULTA, DIAGNOSTICO, STATUS) VALUES (2,2,2, DATE '2025-02-14','Dermatologia','Dermatite alergica leve','REALIZADA')
+
+INSERT INTO CONSULTA (ID_CONSULTA, ID_PET, ID_VETERINARIO, DATA_CONSULTA, TIPO_CONSULTA, DIAGNOSTICO, STATUS) VALUES (3,3,3, DATE '2025-03-05','Cardiologia','Sopro cardiaco grau I, monitorar','REALIZADA')
+
+INSERT INTO CONSULTA (ID_CONSULTA, ID_PET, ID_VETERINARIO, DATA_CONSULTA, TIPO_CONSULTA, DIAGNOSTICO, STATUS) VALUES (4,4,1, DATE '2025-04-18','Vacinacao','Aplicada V4 felina','REALIZADA')
+
+INSERT INTO CONSULTA (ID_CONSULTA, ID_PET, ID_VETERINARIO, DATA_CONSULTA, TIPO_CONSULTA, DIAGNOSTICO, STATUS) VALUES (5,5,4, DATE '2025-05-22','Ortopedia','Displasia coxofemoral leve','REALIZADA')
+
+INSERT INTO CONSULTA (ID_CONSULTA, ID_PET, ID_VETERINARIO, DATA_CONSULTA, TIPO_CONSULTA, DIAGNOSTICO, STATUS) VALUES (6,6,5, DATE '2025-06-30','Checkup','Sem alteracoes','REALIZADA')
+
+INSERT INTO CONSULTA (ID_CONSULTA, ID_PET, ID_VETERINARIO, DATA_CONSULTA, TIPO_CONSULTA, DIAGNOSTICO, STATUS) VALUES (7,7,6, DATE '2025-07-11','Cirurgia','Castracao eletiva realizada','REALIZADA')
+
+INSERT INTO CONSULTA (ID_CONSULTA, ID_PET, ID_VETERINARIO, DATA_CONSULTA, TIPO_CONSULTA, DIAGNOSTICO, STATUS) VALUES (8,8,7, DATE '2025-08-09','Oncologia','Nodulo mamario em investigacao','REALIZADA')
+
+INSERT INTO CONSULTA (ID_CONSULTA, ID_PET, ID_VETERINARIO, DATA_CONSULTA, TIPO_CONSULTA, DIAGNOSTICO, STATUS) VALUES (9,9,8, DATE '2025-09-25','Checkup','Peso acima do ideal, dieta recomendada','REALIZADA')
+
+INSERT INTO CONSULTA (ID_CONSULTA, ID_PET, ID_VETERINARIO, DATA_CONSULTA, TIPO_CONSULTA, DIAGNOSTICO, STATUS) VALUES (10,10,9, DATE '2026-01-15','Nutricao','Ajuste de dieta para filhote','AGENDADA')
+
+INSERT INTO FATO_PAGAMENTO (ID_PAGAMENTO, ID_CONSULTA, CLINICA, TIPO_PAGAMENTO, VALOR, DATA_PAGAMENTO) VALUES (1,1,'KuraVet Pinheiros','Pix',150.00, DATE '2025-01-10')
+
+INSERT INTO FATO_PAGAMENTO (ID_PAGAMENTO, ID_CONSULTA, CLINICA, TIPO_PAGAMENTO, VALOR, DATA_PAGAMENTO) VALUES (2,2,'KuraVet Pinheiros','Pix',180.00, DATE '2025-02-14')
+
+INSERT INTO FATO_PAGAMENTO (ID_PAGAMENTO, ID_CONSULTA, CLINICA, TIPO_PAGAMENTO, VALOR, DATA_PAGAMENTO) VALUES (3,3,'KuraVet Pinheiros','Cartao de Credito',220.00, DATE '2025-03-05')
+
+INSERT INTO FATO_PAGAMENTO (ID_PAGAMENTO, ID_CONSULTA, CLINICA, TIPO_PAGAMENTO, VALOR, DATA_PAGAMENTO) VALUES (4,4,'KuraVet Moema','Pix',90.00, DATE '2025-04-18')
+
+INSERT INTO FATO_PAGAMENTO (ID_PAGAMENTO, ID_CONSULTA, CLINICA, TIPO_PAGAMENTO, VALOR, DATA_PAGAMENTO) VALUES (5,5,'KuraVet Moema','Cartao de Credito',350.00, DATE '2025-05-22')
+
+INSERT INTO FATO_PAGAMENTO (ID_PAGAMENTO, ID_CONSULTA, CLINICA, TIPO_PAGAMENTO, VALOR, DATA_PAGAMENTO) VALUES (6,6,'KuraVet Moema','Cartao de Credito',130.00, DATE '2025-06-30')
+
+INSERT INTO FATO_PAGAMENTO (ID_PAGAMENTO, ID_CONSULTA, CLINICA, TIPO_PAGAMENTO, VALOR, DATA_PAGAMENTO) VALUES (7,7,'KuraVet Moema','Dinheiro',200.00, DATE '2025-07-11')
+
+INSERT INTO FATO_PAGAMENTO (ID_PAGAMENTO, ID_CONSULTA, CLINICA, TIPO_PAGAMENTO, VALOR, DATA_PAGAMENTO) VALUES (8,8,'KuraVet Alphaville','Pix',275.00, DATE '2025-08-09')
+
+INSERT INTO FATO_PAGAMENTO (ID_PAGAMENTO, ID_CONSULTA, CLINICA, TIPO_PAGAMENTO, VALOR, DATA_PAGAMENTO) VALUES (9,9,'KuraVet Alphaville','Cartao de Credito',310.00, DATE '2025-09-25')
+
+INSERT INTO FATO_PAGAMENTO (ID_PAGAMENTO, ID_CONSULTA, CLINICA, TIPO_PAGAMENTO, VALOR, DATA_PAGAMENTO) VALUES (10,10,'KuraVet Alphaville','Dinheiro',95.00, DATE '2026-01-15')
+
+COMMIT
+
+BEGIN PROC_LISTAR_CONSULTAS_JSON; END
+
+BEGIN PROC_SUBTOTAIS_PAGAMENTO; END
+
+BEGIN
+    DBMS_OUTPUT.PUT_LINE('Idade do Pet ID 1: ' || FN_CALCULA_IDADE_PET(1));
+    DBMS_OUTPUT.PUT_LINE('Idade do Pet ID 10: ' || FN_CALCULA_IDADE_PET(10));
+    DBMS_OUTPUT.PUT_LINE('Idade do Pet ID 999 (inexistente): ' || FN_CALCULA_IDADE_PET(999));
+END
+
+INSERT INTO CONSULTA (ID_CONSULTA, ID_PET, ID_VETERINARIO, DATA_CONSULTA, TIPO_CONSULTA, DIAGNOSTICO, STATUS)
+VALUES (11, 1, 2, SYSDATE, 'Retorno', 'Avaliacao de rotina pos-checkup', 'AGENDADA')
+
+UPDATE CONSULTA SET STATUS = 'REALIZADA', DIAGNOSTICO = 'Retorno concluido sem intercorrencias' WHERE ID_CONSULTA = 11
+
+DELETE FROM CONSULTA WHERE ID_CONSULTA = 11
+
+COMMIT
+
+SELECT ID_LOG, USUARIO, OPERACAO, TABELA_AFETADA, DATA_HORA, VALORES_OLD, VALORES_NEW FROM AUDITORIA_LOG ORDER BY ID_LOG
+
+BEGIN EXECUTE IMMEDIATE 'DROP TABLE LOG_ERRO_CARGA CASCADE CONSTRAINTS PURGE'; EXCEPTION WHEN OTHERS THEN NULL; END
+
+BEGIN EXECUTE IMMEDIATE 'DROP SEQUENCE SEQ_KV_TUTOR'; EXCEPTION WHEN OTHERS THEN NULL; END
+
+BEGIN EXECUTE IMMEDIATE 'DROP SEQUENCE SEQ_KV_VETERINARIO'; EXCEPTION WHEN OTHERS THEN NULL; END
+
+BEGIN EXECUTE IMMEDIATE 'DROP SEQUENCE SEQ_KV_PET'; EXCEPTION WHEN OTHERS THEN NULL; END
+
+BEGIN EXECUTE IMMEDIATE 'DROP SEQUENCE SEQ_KV_CONSULTA'; EXCEPTION WHEN OTHERS THEN NULL; END
+
+BEGIN EXECUTE IMMEDIATE 'DROP SEQUENCE SEQ_KV_PAGAMENTO'; EXCEPTION WHEN OTHERS THEN NULL; END
+
+BEGIN
+    PRC_CARGA_TUTOR('Roberta Nascimento', '123.456.789-01', '(11) 90000-1001', 'roberta.nascimento@email.com', 'Rua Nova, 10 - Sao Paulo/SP');
+EXCEPTION WHEN OTHERS THEN DBMS_OUTPUT.PUT_LINE('Erro bloco chamador: ' || SQLERRM); END
+
+BEGIN
+    PRC_CARGA_TUTOR('Tutor CPF Invalido', '123', '(11) 90000-1002', 'invalido@email.com', 'Rua Teste, 20');
+EXCEPTION WHEN OTHERS THEN DBMS_OUTPUT.PUT_LINE('Erro bloco chamador: ' || SQLERRM); END
+
+BEGIN
+    PRC_CARGA_VETERINARIO('Dr. Vinicius Prado', 'CRMV-SP 99999', 'Endocrinologia', '(11) 3222-1099', 'vinicius.prado@kuravet.com');
+EXCEPTION WHEN OTHERS THEN DBMS_OUTPUT.PUT_LINE('Erro bloco chamador: ' || SQLERRM); END
+
+BEGIN
+    PRC_CARGA_VETERINARIO('Veterinario CRMV Invalido', 'X', 'Clinica Geral', '(11) 3222-1098', 'semcrmv@kuravet.com');
+EXCEPTION WHEN OTHERS THEN DBMS_OUTPUT.PUT_LINE('Erro bloco chamador: ' || SQLERRM); END
+
+BEGIN
+    PRC_CARGA_PET('Amora', 'Gato', 'Maine Coon', DATE '2023-04-10', 'F', 1);
+EXCEPTION WHEN OTHERS THEN DBMS_OUTPUT.PUT_LINE('Erro bloco chamador: ' || SQLERRM); END
+
+BEGIN
+    PRC_CARGA_PET('Pet Tutor Inexistente', 'Cachorro', 'SRD', DATE '2022-01-01', 'M', 9999);
+EXCEPTION WHEN OTHERS THEN DBMS_OUTPUT.PUT_LINE('Erro bloco chamador: ' || SQLERRM); END
+
+BEGIN
+    PRC_CARGA_CONSULTA(1, 1, SYSDATE, 'Checkup', 'Retorno de rotina cadastrado via procedure', 'AGENDADA');
+EXCEPTION WHEN OTHERS THEN DBMS_OUTPUT.PUT_LINE('Erro bloco chamador: ' || SQLERRM); END
+
+BEGIN
+    PRC_CARGA_CONSULTA(1, 1, SYSDATE, 'Checkup', 'Status invalido de teste', 'EM_ANDAMENTO');
+EXCEPTION WHEN OTHERS THEN DBMS_OUTPUT.PUT_LINE('Erro bloco chamador: ' || SQLERRM); END
+
+BEGIN
+    PRC_CARGA_PAGAMENTO(1, 'KuraVet Pinheiros', 'Pix', 175.00, SYSDATE);
+EXCEPTION WHEN OTHERS THEN DBMS_OUTPUT.PUT_LINE('Erro bloco chamador: ' || SQLERRM); END
+
+BEGIN
+    PRC_CARGA_PAGAMENTO(1, 'KuraVet Pinheiros', 'Pix', -50.00, SYSDATE);
+EXCEPTION WHEN OTHERS THEN DBMS_OUTPUT.PUT_LINE('Erro bloco chamador: ' || SQLERRM); END
+
+SELECT ID_LOG_ERRO, NM_PROCEDURE, NM_USUARIO, DT_OCORRENCIA, CD_ERRO, DS_MENSAGEM_ERRO
+FROM   LOG_ERRO_CARGA
+ORDER  BY ID_LOG_ERRO
+
+DECLARE
+BEGIN
+    DBMS_OUTPUT.PUT_LINE('=== Quantidade de consultas por Tutor e Veterinario ===');
+    FOR r IN (
+        SELECT t.nome AS tutor, v.nome AS veterinario, COUNT(c.id_consulta) AS qtd_consultas
+        FROM   TUTOR t
+        JOIN   PET p          ON p.id_tutor = t.id_tutor
+        JOIN   CONSULTA c     ON c.id_pet = p.id_pet
+        JOIN   VETERINARIO v  ON v.id_veterinario = c.id_veterinario
+        GROUP BY t.nome, v.nome
+        ORDER BY qtd_consultas DESC, t.nome ASC
+    ) LOOP
+        DBMS_OUTPUT.PUT_LINE(RPAD(r.tutor, 26) || RPAD(r.veterinario, 24) || r.qtd_consultas);
+    END LOOP;
+
+    DBMS_OUTPUT.PUT_LINE(' ');
+    DBMS_OUTPUT.PUT_LINE('=== Faturamento total por Especie do Pet e Clinica ===');
+    FOR r IN (
+        SELECT p.especie, f.clinica, SUM(f.valor) AS total_faturado
+        FROM   PET p
+        JOIN   CONSULTA c        ON c.id_pet = p.id_pet
+        JOIN   FATO_PAGAMENTO f  ON f.id_consulta = c.id_consulta
+        GROUP BY p.especie, f.clinica
+        ORDER BY total_faturado DESC
+    ) LOOP
+        DBMS_OUTPUT.PUT_LINE(RPAD(r.especie, 12) || RPAD(r.clinica, 22) || 'R$ ' || TO_CHAR(r.total_faturado, 'FM999G999D00'));
+    END LOOP;
+EXCEPTION
+    WHEN OTHERS THEN
+        DBMS_OUTPUT.PUT_LINE('Erro inesperado no Bloco Anonimo 1: ' || SQLERRM);
+END
+
+DECLARE
+BEGIN
+    DBMS_OUTPUT.PUT_LINE('=== Quantidade de consultas por Veterinario e Tipo de Consulta ===');
+    FOR r IN (
+        SELECT v.nome AS veterinario, c.tipo_consulta, COUNT(*) AS qtd
+        FROM   VETERINARIO v
+        JOIN   CONSULTA c  ON c.id_veterinario = v.id_veterinario
+        JOIN   PET p       ON p.id_pet = c.id_pet
+        JOIN   TUTOR t     ON t.id_tutor = p.id_tutor
+        GROUP BY v.nome, c.tipo_consulta
+        ORDER BY v.nome ASC, qtd DESC
+    ) LOOP
+        DBMS_OUTPUT.PUT_LINE(RPAD(r.veterinario, 24) || RPAD(r.tipo_consulta, 18) || r.qtd);
+    END LOOP;
+EXCEPTION
+    WHEN OTHERS THEN
+        DBMS_OUTPUT.PUT_LINE('Erro inesperado no Bloco Anonimo 2: ' || SQLERRM);
+END
+
+DECLARE
+    TYPE t_valores IS TABLE OF FATO_PAGAMENTO.VALOR%TYPE INDEX BY PLS_INTEGER;
+    v_valores    t_valores;
+    v_qtd        PLS_INTEGER := 0;
+    v_atual      VARCHAR2(20);
+    v_anterior   VARCHAR2(20);
+    v_proximo    VARCHAR2(20);
+BEGIN
+    FOR r IN (SELECT valor FROM FATO_PAGAMENTO ORDER BY id_pagamento) LOOP
+        v_qtd := v_qtd + 1;
+        v_valores(v_qtd) := r.valor;
+    END LOOP;
+
+    IF v_qtd = 0 THEN
+        RAISE NO_DATA_FOUND;
+    END IF;
+
+    DBMS_OUTPUT.PUT_LINE(RPAD('LINHA', 8) || RPAD('ANTERIOR', 15) || RPAD('ATUAL', 15) || 'PROXIMO');
+    DBMS_OUTPUT.PUT_LINE(RPAD('-', 50, '-'));
+
+    FOR i IN 1..v_qtd LOOP
+        v_atual := TO_CHAR(v_valores(i), 'FM999G999D00');
+        IF i = 1 THEN v_anterior := 'Vazio'; ELSE v_anterior := TO_CHAR(v_valores(i - 1), 'FM999G999D00'); END IF;
+        IF i = v_qtd THEN v_proximo := 'Vazio'; ELSE v_proximo := TO_CHAR(v_valores(i + 1), 'FM999G999D00'); END IF;
+        DBMS_OUTPUT.PUT_LINE(RPAD(i, 8) || RPAD(v_anterior, 15) || RPAD(v_atual, 15) || v_proximo);
+    END LOOP;
+EXCEPTION
+    WHEN NO_DATA_FOUND THEN
+        DBMS_OUTPUT.PUT_LINE('Aviso: a tabela FATO_PAGAMENTO nao possui registros.');
+    WHEN OTHERS THEN
+        DBMS_OUTPUT.PUT_LINE('Erro inesperado: ' || SQLERRM);
+END
+
+DECLARE
+    CURSOR c_pet IS SELECT nome, especie, data_nascimento FROM PET ORDER BY data_nascimento;
+    v_pet        c_pet%ROWTYPE;
+    v_meses      NUMBER;
+    v_categoria  VARCHAR2(20);
+BEGIN
+    DBMS_OUTPUT.PUT_LINE(RPAD('PET', 15) || RPAD('ESPECIE', 12) || 'CATEGORIA ETARIA');
+    DBMS_OUTPUT.PUT_LINE(RPAD('-', 45, '-'));
+    OPEN c_pet;
+    LOOP
+        FETCH c_pet INTO v_pet;
+        EXIT WHEN c_pet%NOTFOUND;
+        v_meses := TRUNC(MONTHS_BETWEEN(SYSDATE, v_pet.data_nascimento));
+        IF v_meses < 12 THEN v_categoria := 'Filhote'; ELSIF v_meses < 84 THEN v_categoria := 'Adulto'; ELSE v_categoria := 'Idoso'; END IF;
+        DBMS_OUTPUT.PUT_LINE(RPAD(v_pet.nome, 15) || RPAD(v_pet.especie, 12) || v_categoria);
+    END LOOP;
+    CLOSE c_pet;
+EXCEPTION
+    WHEN OTHERS THEN
+        IF c_pet%ISOPEN THEN CLOSE c_pet; END IF;
+        DBMS_OUTPUT.PUT_LINE('Erro inesperado: ' || SQLERRM);
+END
+
+DECLARE
+    CURSOR c_cons IS SELECT tipo_consulta, status FROM CONSULTA ORDER BY status;
+    v_c      c_cons%ROWTYPE;
+    v_acao   VARCHAR2(40);
+BEGIN
+    DBMS_OUTPUT.PUT_LINE(RPAD('TIPO DE CONSULTA', 22) || RPAD('STATUS', 14) || 'ACAO RECOMENDADA');
+    DBMS_OUTPUT.PUT_LINE(RPAD('-', 60, '-'));
+    OPEN c_cons;
+    LOOP
+        FETCH c_cons INTO v_c;
+        EXIT WHEN c_cons%NOTFOUND;
+        IF v_c.status = 'AGENDADA' THEN v_acao := 'Enviar lembrete ao tutor'; ELSIF v_c.status = 'CANCELADA' THEN v_acao := 'Verificar motivo'; ELSE v_acao := 'Arquivar prontuario'; END IF;
+        DBMS_OUTPUT.PUT_LINE(RPAD(v_c.tipo_consulta, 22) || RPAD(v_c.status, 14) || v_acao);
+    END LOOP;
+    CLOSE c_cons;
+EXCEPTION
+    WHEN OTHERS THEN
+        IF c_cons%ISOPEN THEN CLOSE c_cons; END IF;
+        DBMS_OUTPUT.PUT_LINE('Erro inesperado: ' || SQLERRM);
+END
+
+DECLARE
+    CURSOR c_tutor IS SELECT t.nome, (SELECT COUNT(*) FROM PET p WHERE p.id_tutor = t.id_tutor) AS qtd_pets FROM TUTOR t ORDER BY t.nome;
+    v_t          c_tutor%ROWTYPE;
+    v_categoria  VARCHAR2(20);
+BEGIN
+    DBMS_OUTPUT.PUT_LINE(RPAD('TUTOR', 30) || RPAD('QTD PETS', 10) || 'CATEGORIA');
+    DBMS_OUTPUT.PUT_LINE(RPAD('-', 60, '-'));
+    OPEN c_tutor;
+    LOOP
+        FETCH c_tutor INTO v_t;
+        EXIT WHEN c_tutor%NOTFOUND;
+        IF v_t.qtd_pets >= 2 THEN v_categoria := 'Cliente Ouro'; ELSIF v_t.qtd_pets = 1 THEN v_categoria := 'Cliente Prata'; ELSE v_categoria := 'Sem pets'; END IF;
+        DBMS_OUTPUT.PUT_LINE(RPAD(v_t.nome, 30) || RPAD(v_t.qtd_pets, 10) || v_categoria);
+    END LOOP;
+    CLOSE c_tutor;
+EXCEPTION
+    WHEN OTHERS THEN
+        IF c_tutor%ISOPEN THEN CLOSE c_tutor; END IF;
+        DBMS_OUTPUT.PUT_LINE('Erro inesperado: ' || SQLERRM);
+END
+
+DECLARE
+    CURSOR c_pag IS SELECT clinica, tipo_pagamento, id_pagamento, valor FROM FATO_PAGAMENTO ORDER BY clinica, id_pagamento;
+    r_pag              c_pag%ROWTYPE;
+    v_clinica_ant      VARCHAR2(60) := NULL;
+    v_subtotal_clinica NUMBER(10,2) := 0;
+    v_total_geral      NUMBER(10,2) := 0;
+    v_qtd_linhas       NUMBER := 0;
+BEGIN
+    DBMS_OUTPUT.PUT_LINE('=== RELATORIO COMPLETO DE PAGAMENTOS ===');
+    DBMS_OUTPUT.PUT_LINE(RPAD('CLINICA', 22) || RPAD('TIPO PAGAMENTO', 18) || RPAD('ID', 8) || 'VALOR (R$)');
+    DBMS_OUTPUT.PUT_LINE(RPAD('-', 60, '-'));
+    OPEN c_pag;
+    LOOP
+        FETCH c_pag INTO r_pag;
+        EXIT WHEN c_pag%NOTFOUND;
+        v_qtd_linhas := v_qtd_linhas + 1;
+        IF v_clinica_ant IS NOT NULL AND r_pag.clinica <> v_clinica_ant THEN
+            DBMS_OUTPUT.PUT_LINE(RPAD('Subtotal ' || v_clinica_ant, 48) || TO_CHAR(v_subtotal_clinica, 'FM999G999D00'));
+            DBMS_OUTPUT.PUT_LINE(RPAD('-', 60, '-'));
+            v_subtotal_clinica := 0;
+        END IF;
+        v_clinica_ant := r_pag.clinica;
+        DBMS_OUTPUT.PUT_LINE(RPAD(r_pag.clinica, 22) || RPAD(r_pag.tipo_pagamento, 18) || RPAD(r_pag.id_pagamento, 8) || TO_CHAR(r_pag.valor, 'FM999G999D00'));
+        v_subtotal_clinica := v_subtotal_clinica + r_pag.valor;
+        v_total_geral       := v_total_geral + r_pag.valor;
+    END LOOP;
+    CLOSE c_pag;
+
+    IF v_qtd_linhas > 0 THEN
+        DBMS_OUTPUT.PUT_LINE(RPAD('Subtotal ' || v_clinica_ant, 48) || TO_CHAR(v_subtotal_clinica, 'FM999G999D00'));
+    END IF;
+    DBMS_OUTPUT.PUT_LINE(RPAD('=', 60, '='));
+    DBMS_OUTPUT.PUT_LINE(RPAD('TOTAL GERAL SUMARIZADO', 48) || TO_CHAR(v_total_geral, 'FM999G999D00'));
+
+EXCEPTION
+    WHEN OTHERS THEN
+        IF c_pag%ISOPEN THEN CLOSE c_pag; END IF;
+        DBMS_OUTPUT.PUT_LINE('Erro inesperado: ' || SQLERRM);
+END
+

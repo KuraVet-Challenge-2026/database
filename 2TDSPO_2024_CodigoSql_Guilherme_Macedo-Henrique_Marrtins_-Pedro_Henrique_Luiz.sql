@@ -1,14 +1,8 @@
---------------------------------------------------------------------------------
--- SISTEMA KURAVET - PLATAFORMA DE SAUDE PREVENTIVA CONTINUA PARA PETS
--- SCRIPT_BD.SQL - Oracle Database
---------------------------------------------------------------------------------
-
-Set Serveroutput On;
+SET SERVEROUTPUT ON;
+SET VERIFY OFF;
 SET LINESIZE 200;
 
---------------------------------------------------------------------------------
--- 0. LIMPEZA DE OBJETOS EXISTENTES (IDEMPOTENCIA)
---------------------------------------------------------------------------------
+-- LIMPEZA
 BEGIN EXECUTE IMMEDIATE 'DROP TRIGGER TRG_AUDITORIA_CONSULTA'; EXCEPTION WHEN OTHERS THEN NULL; END;
 /
 BEGIN EXECUTE IMMEDIATE 'DROP TABLE AUDITORIA_LOG CASCADE CONSTRAINTS PURGE'; EXCEPTION WHEN OTHERS THEN NULL; END;
@@ -25,8 +19,8 @@ BEGIN EXECUTE IMMEDIATE 'DROP TABLE TUTOR CASCADE CONSTRAINTS PURGE'; EXCEPTION 
 /
 
 --------------------------------------------------------------------------------
--- 1. DDL - TABELAS CORE
---------------------------------------------------------------------------------
+
+-- 1. DDL
 CREATE TABLE TUTOR (
     ID_TUTOR        NUMBER(6)       NOT NULL,
     NOME            VARCHAR2(100)   NOT NULL,
@@ -101,8 +95,8 @@ CREATE TABLE AUDITORIA_LOG (
 );
 
 --------------------------------------------------------------------------------
--- 2. DML - CARGA DE DADOS (10 REGISTROS POR TABELA)
---------------------------------------------------------------------------------
+
+-- 2. DML - CARGA DE DADOS 
 -- TUTOR
 INSERT INTO TUTOR (ID_TUTOR, NOME, CPF, TELEFONE, EMAIL, ENDERECO, DATA_CADASTRO) VALUES (1,'Ana Beatriz Souza','111.222.333-44','(11) 91234-5601','ana.souza@email.com','Rua das Flores, 120 - Sao Paulo/SP', DATE '2024-01-10');
 INSERT INTO TUTOR (ID_TUTOR, NOME, CPF, TELEFONE, EMAIL, ENDERECO, DATA_CADASTRO) VALUES (2,'Carlos Eduardo Lima','222.333.444-55','(11) 91234-5602','carlos.lima@email.com','Av. Paulista, 900 - Sao Paulo/SP', DATE '2024-01-15');
@@ -166,8 +160,8 @@ INSERT INTO FATO_PAGAMENTO (ID_PAGAMENTO, ID_CONSULTA, CLINICA, TIPO_PAGAMENTO, 
 COMMIT;
 
 --------------------------------------------------------------------------------
--- 3. FUNCAO 1 - CONVERSOR JSON MANUAL (SEM FUNCOES NATIVAS DE JSON)
---------------------------------------------------------------------------------
+
+-- 3. FUNCAO 1 - CONVERSOR JSON MANUAL 
 CREATE OR REPLACE FUNCTION FN_MONTA_JSON (
     p_id_consulta   IN NUMBER,
     p_pet           IN VARCHAR2,
@@ -183,7 +177,7 @@ BEGIN
         RAISE VALUE_ERROR;
     END IF;
 
-    -- Concatenação manual para não utilizar funções embutidas JSON_OBJECT
+    -- Concatenação 
     v_json := '{' ||
               '"id_consulta":' || TO_CHAR(p_id_consulta) || ',' ||
               '"pet":"'         || NVL(p_pet,'N/A')         || '",' ||
@@ -206,9 +200,8 @@ EXCEPTION
 END FN_MONTA_JSON;
 /
 
---------------------------------------------------------------------------------
+
 -- 4. PROCEDIMENTO 1 - JOIN ENTRE TABELAS + USO DA FUNCAO JSON
---------------------------------------------------------------------------------
 CREATE OR REPLACE PROCEDURE PROC_LISTAR_CONSULTAS_JSON
 IS
     CURSOR c_consultas IS
@@ -257,9 +250,7 @@ EXCEPTION
 END PROC_LISTAR_CONSULTAS_JSON;
 /
 
---------------------------------------------------------------------------------
--- 5. PROCEDIMENTO 2 - SUBTOTAIS MANUAIS (COM FORMATACAO TABULAR)
---------------------------------------------------------------------------------
+-- 5. PROCEDIMENTO 2 - SUBTOTAIS
 CREATE OR REPLACE PROCEDURE PROC_SUBTOTAIS_PAGAMENTO
 IS
     CURSOR c_pag IS
@@ -337,9 +328,7 @@ EXCEPTION
 END PROC_SUBTOTAIS_PAGAMENTO;
 /
 
---------------------------------------------------------------------------------
--- 6. FUNCAO 2 - REGRA DE NEGOCIO: CALCULO DA IDADE EXATA DO PET
---------------------------------------------------------------------------------
+-- 6. FUNCAO 2 - CALCULO DA IDADE EXATA DO PET
 CREATE OR REPLACE FUNCTION FN_CALCULA_IDADE_PET (
     p_id_pet IN NUMBER
 ) RETURN VARCHAR2
@@ -388,9 +377,7 @@ EXCEPTION
 END FN_CALCULA_IDADE_PET;
 /
 
---------------------------------------------------------------------------------
--- 7. TRIGGER DE AUDITORIA (AFTER INSERT OR UPDATE OR DELETE) NA TABELA CONSULTA
---------------------------------------------------------------------------------
+-- 7. TRIGGER DE AUDITORIA
 CREATE OR REPLACE TRIGGER TRG_AUDITORIA_CONSULTA
 AFTER INSERT OR UPDATE OR DELETE ON CONSULTA
 FOR EACH ROW
@@ -452,8 +439,8 @@ END TRG_AUDITORIA_CONSULTA;
 /
 
 --------------------------------------------------------------------------------
--- 8. BLOCO DE DEMONSTRACAO / TESTES GERAIS
---------------------------------------------------------------------------------
+
+-- 8. TESTES GERAIS
 BEGIN PROC_LISTAR_CONSULTAS_JSON; END;
 /
 BEGIN PROC_SUBTOTAIS_PAGAMENTO; END;
@@ -475,8 +462,8 @@ COMMIT;
 SELECT ID_LOG, USUARIO, OPERACAO, TABELA_AFETADA, DATA_HORA, VALORES_OLD, VALORES_NEW FROM AUDITORIA_LOG ORDER BY ID_LOG;
 
 --------------------------------------------------------------------------------
--- 9. TABELA DE LOG DE ERROS DE CARGA (Sprint 3)
---------------------------------------------------------------------------------
+
+-- 9. TABELA DE LOG DE ERROS DE CARGA
 BEGIN EXECUTE IMMEDIATE 'DROP TABLE LOG_ERRO_CARGA CASCADE CONSTRAINTS PURGE'; EXCEPTION WHEN OTHERS THEN NULL; END;
 /
 CREATE TABLE LOG_ERRO_CARGA (
@@ -489,9 +476,7 @@ CREATE TABLE LOG_ERRO_CARGA (
     CONSTRAINT KV_PK_LOG_ERRO_CARGA PRIMARY KEY (ID_LOG_ERRO)
 );
 
---------------------------------------------------------------------------------
 -- 10. SEQUENCES PARA GERACAO DE CHAVES NAS PROCEDURES DE CARGA
---------------------------------------------------------------------------------
 BEGIN EXECUTE IMMEDIATE 'DROP SEQUENCE SEQ_KV_TUTOR'; EXCEPTION WHEN OTHERS THEN NULL; END;
 /
 BEGIN EXECUTE IMMEDIATE 'DROP SEQUENCE SEQ_KV_VETERINARIO'; EXCEPTION WHEN OTHERS THEN NULL; END;
@@ -507,10 +492,6 @@ CREATE SEQUENCE SEQ_KV_VETERINARIO START WITH 100 INCREMENT BY 1 NOCACHE;
 CREATE SEQUENCE SEQ_KV_PET         START WITH 100 INCREMENT BY 1 NOCACHE;
 CREATE SEQUENCE SEQ_KV_CONSULTA    START WITH 100 INCREMENT BY 1 NOCACHE;
 CREATE SEQUENCE SEQ_KV_PAGAMENTO   START WITH 100 INCREMENT BY 1 NOCACHE;
-
---------------------------------------------------------------------------------
--- 11. PROCEDURES DE CARGA DE DADOS COM TRATAMENTO CORRIGIDO (Evitando ORA-00984)
---------------------------------------------------------------------------------
 
 -- 11.1 PRC_CARGA_TUTOR
 CREATE OR REPLACE PROCEDURE PRC_CARGA_TUTOR (
@@ -765,9 +746,7 @@ EXCEPTION
 END PRC_CARGA_PAGAMENTO;
 /
 
---------------------------------------------------------------------------------
--- 12. DEMONSTRACAO DAS PROCEDURES DE CARGA (Para print de exceções tratadas)
---------------------------------------------------------------------------------
+-- 12. DEMONSTRACAO DAS PROCEDURES DE CARGA
 BEGIN
     PRC_CARGA_TUTOR('Roberta Nascimento', '123.456.789-01', '(11) 90000-1001', 'roberta.nascimento@email.com', 'Rua Nova, 10 - Sao Paulo/SP');
 EXCEPTION WHEN OTHERS THEN DBMS_OUTPUT.PUT_LINE('Erro bloco chamador: ' || SQLERRM); END;
@@ -809,14 +788,14 @@ BEGIN
 EXCEPTION WHEN OTHERS THEN DBMS_OUTPUT.PUT_LINE('Erro bloco chamador: ' || SQLERRM); END;
 /
 
--- Consulta à tabela de Log de Erros (Obrigatório apresentar este Select)
+-- Consulta à tabela de Log de Erros 
 SELECT ID_LOG_ERRO, NM_PROCEDURE, NM_USUARIO, DT_OCORRENCIA, CD_ERRO, DS_MENSAGEM_ERRO
 FROM   LOG_ERRO_CARGA
 ORDER  BY ID_LOG_ERRO;
 
 --------------------------------------------------------------------------------
+
 -- 13. BLOCOS ANONIMOS COM JUNCOES E AGRUPAMENTO
---------------------------------------------------------------------------------
 DECLARE
 BEGIN
     DBMS_OUTPUT.PUT_LINE('=== Quantidade de consultas por Tutor e Veterinario ===');
@@ -870,9 +849,7 @@ EXCEPTION
 END;
 /
 
---------------------------------------------------------------------------------
 -- 14. BLOCO ANONIMO: VALOR ATUAL, ANTERIOR E PROXIMO
---------------------------------------------------------------------------------
 DECLARE
     TYPE t_valores IS TABLE OF FATO_PAGAMENTO.VALOR%TYPE INDEX BY PLS_INTEGER;
     v_valores    t_valores;
@@ -907,9 +884,7 @@ EXCEPTION
 END;
 /
 
---------------------------------------------------------------------------------
 -- 15. RELATORIOS COM CURSOR EXPLICITO E TOMADA DE DECISAO
---------------------------------------------------------------------------------
 DECLARE
     CURSOR c_pet IS SELECT nome, especie, data_nascimento FROM PET ORDER BY data_nascimento;
     v_pet        c_pet%ROWTYPE;

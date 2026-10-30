@@ -1,12 +1,11 @@
-[
-{"_id":1,"nome":"Dra. Patricia Gomes","crmv":"CRMV-SP 12345","especialidade":"Clinica Geral","contato":{"telefone":"(11) 3222-1001","email":"patricia.gomes@kuravet.com"},"estatisticas":{"total_consultas":3,"consultas_realizadas":3}},
-{"_id":2,"nome":"Dr. Rafael Andrade","crmv":"CRMV-SP 12346","especialidade":"Dermatologia","contato":{"telefone":"(11) 3222-1002","email":"rafael.andrade@kuravet.com"},"estatisticas":{"total_consultas":2,"consultas_realizadas":2}},
-{"_id":3,"nome":"Dra. Camila Duarte","crmv":"CRMV-RJ 22345","especialidade":"Cardiologia","contato":{"telefone":"(21) 3222-1003","email":"camila.duarte@kuravet.com"},"estatisticas":{"total_consultas":3,"consultas_realizadas":2}},
+
+[{"_id":1,"nome":"Dra. Patricia Gomes","crmv":"CRMV-SP 12345","especialidade":"Clinica Geral","contato":{"telefone":"(11) 3222-1001","email":"patricia.gomes@kuravet.com"},"estatisticas":{"total_consultas":5,"consultas_realizadas":3}},
+{"_id":2,"nome":"Dr. Rafael Andrade","crmv":"CRMV-SP 12346","especialidade":"Dermatologia","contato":{"telefone":"(11) 3222-1002","email":"rafael.andrade@kuravet.com"},"estatisticas":{"total_consultas":2,"consultas_realizadas":1}},
+{"_id":3,"nome":"Dra. Camila Duarte","crmv":"CRMV-RJ 22345","especialidade":"Cardiologia","contato":{"telefone":"(21) 3222-1003","email":"camila.duarte@kuravet.com"},"estatisticas":{"total_consultas":2,"consultas_realizadas":1}},
 {"_id":4,"nome":"Dr. Bruno Cardoso","crmv":"CRMV-MG 32345","especialidade":"Ortopedia","contato":{"telefone":"(31) 3222-1004","email":"bruno.cardoso@kuravet.com"},"estatisticas":{"total_consultas":2,"consultas_realizadas":1}},
-{"_id":5,"nome":"Dra. Larissa Ferreira","crmv":"CRMV-PR 42345","especialidade":"Clinica Geral","contato":{"telefone":"(41) 3222-1005","email":"larissa.ferreira@kuravet.com"},"estatisticas":{"total_consultas":1,"consultas_realizadas":1}},
-{"_id":6,"nome":"Dr. Eduardo Santos","crmv":"CRMV-RS 52345","especialidade":"Cirurgia","contato":{"telefone":"(51) 3222-1006","email":"eduardo.santos@kuravet.com"},"estatisticas":{"total_consultas":2,"consultas_realizadas":1}},
-{"_id":7,"nome":"Dra. Renata Barbosa","crmv":"CRMV-PE 62345","especialidade":"Oncologia","contato":{"telefone":"(81) 3222-1007","email":"renata.barbosa@kuravet.com"},"estatisticas":{"total_consultas":1,"consultas_realizadas":1}},
-{"_id":8,"nome":"Dr. Felipe Ramos","crmv":"CRMV-DF 72345","especialidade":"Clinica Geral","contato":{"telefone":"(61) 3222-1008","email":"felipe.ramos@kuravet.com"},"estatisticas":{"total_consultas":1,"consultas_realizadas":1}},
-{"_id":9,"nome":"Dra. Vanessa Lopes","crmv":"CRMV-CE 82345","especialidade":"Nutricao","contato":{"telefone":"(85) 3222-1009","email":"vanessa.lopes@kuravet.com"},"estatisticas":{"total_consultas":1,"consultas_realizadas":0}},
-{"_id":10,"nome":"Dr. Thiago Moreira","crmv":"CRMV-BA 92345","especialidade":"Clinica Geral","contato":{"telefone":"(71) 3222-1010","email":"thiago.moreira@kuravet.com"},"estatisticas":{"total_consultas":0,"consultas_realizadas":0}}
-]
+{"_id":5,"nome":"Dra. Larissa Ferreira","crmv":"CRMV-PR 42345","especialidade":"Clinica Geral","contato":{"telefone":"(41) 3222-1005","email":"larissa.ferreira@kuravet.com"},"estatisticas":{"total_consultas":3,"consultas_realizadas":3}},
+{"_id":6,"nome":"Dr. Eduardo Santos","crmv":"CRMV-RS 52345","especialidade":"Cirurgia","contato":{"telefone":"(51) 3222-1006","email":"eduardo.santos@kuravet.com"},"estatisticas":{"total_consultas":0,"consultas_realizadas":0}},
+{"_id":7,"nome":"Dra. Renata Barbosa","crmv":"CRMV-PE 62345","especialidade":"Oncologia","contato":{"telefone":"(81) 3222-1007","email":"renata.barbosa@kuravet.com"},"estatisticas":{"total_consultas":0,"consultas_realizadas":0}},
+{"_id":8,"nome":"Dr. Felipe Ramos","crmv":"CRMV-DF 72345","especialidade":"Clinica Geral","contato":{"telefone":"(61) 3222-1008","email":"felipe.ramos@kuravet.com"},"estatisticas":{"total_consultas":0,"consultas_realizadas":0}},
+{"_id":9,"nome":"Dra. Vanessa Lopes","crmv":"CRMV-CE 82345","especialidade":"Nutricao","contato":{"telefone":"(85) 3222-1009","email":"vanessa.lopes@kuravet.com"},"estatisticas":{"total_consultas":0,"consultas_realizadas":0}},
+{"_id":10,"nome":"Dr. Thiago Moreira","crmv":"CRMV-BA 92345","especialidade":"Clinica Geral","contato":{"telefone":"(71) 3222-1010","email":"thiago.moreira@kuravet.com"},"estatisticas":{"total_consultas":0,"consultas_realizadas":0}}]
